@@ -1,21 +1,27 @@
 {
-    "name": "journey_to_armenia",
+    "name": "yerevan_coder",
     "version": "0.0.1",
-    "description": "The website behind Journey to Armenia",
+    "description": "The code behind yerevancoder.com",
     "main": "src/server.js",
     "dependencies": {
-	"body-parser": "^1.15.1",
+	"babel-standalone": "^6.12.0",
+	"body-parser": "^1.15.2",
 	"express": "^4.14.0",
-	"react": "^15.0.2",
-	"react-dom": "*",
+	"fbjs": "^0.8.3",
+	"react": "^15.3.0",
+	"react-dom": "^15.3.0",
+	"react-dom-server": "0.0.5",
+	"react-universal": "0.0.4",
 	"whatwg-fetch": "^1.0.0"
     },
     "devDependencies": {
 	"express": "^4.13.4"
     },
     "scripts": {
-	"//" : "What a stupid hack",
-	"test":"echo '12'"
+	"//": "What a stupid hack",
+	"build_front_end" : "node src/build_site.js",
+	"start" : "node src/server.js",
+	"debug" : "node debug src/server.js"
     },
     "author": "Edgar Aroutiounian <edgar.factorial@gmail.com>",
     "license": "ISC"
