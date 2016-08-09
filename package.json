@@ -21,7 +21,8 @@
 	"//": "What a stupid hack",
 	"build_front_end" : "node src/build_site.js",
 	"start" : "node src/server.js",
-	"debug" : "node debug src/server.js"
+	"//" : "do `npm start watch` during development",
+	"watch" : "nodemon src/server.js"
     },
     "author": "Edgar Aroutiounian <edgar.factorial@gmail.com>",
     "license": "ISC"
