@@ -1,7 +1,5 @@
 "use strict";
 
-const l = console.log;
-
 const express = require('express'),
       ReactDOMServer = require('react-dom/server'),
       body_parser = require('body-parser'),
@@ -11,13 +9,30 @@ const express = require('express'),
       yerevan_coder = express();
 
 yerevan_coder.get('/', (req, res) => {
+  fs.readFile('src/homepage.jsx', (err, file_data) => {
+    const compiled = babel.transform(file_data,
+				     {presets:['react']}).code,
+	  homepage = eval(compiled);
+    res.end(
+      ReactDOMServer.renderToString(React.createElement(homepage, null))
+    );
+  });
 
-  const homepage_jsx = fs.readFileSync('src/homepage.jsx');
-  const compiled = babel.transform(homepage_jsx, {presets:['react']}).code;
-  const result = React.createElement(eval(compiled), null);
-  const rendered = ReactDOMServer.renderToStaticMarkup(result);
-  res.end(rendered);
+});
 
+yerevan_coder.get("/*.jsx", (req, res) => {
+  fs.readFile('.' + req.path, (err, file_data) => {
+    // console.log(err);
+
+    // console.log(file_data);
+    const compiled = babel.transform(file_data,
+				     {presets:['react']}).code;
+    console.log(compiled);
+
+    res.end(compiled);
+    // console.log(eval(compiled));
+    // res.end(eval(compiled));
+  });
 });
 
 yerevan_coder.use(express.static('.'));

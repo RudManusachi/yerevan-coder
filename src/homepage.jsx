@@ -1,41 +1,19 @@
-"use strict";
 
-const React = require('react');
-
-const NavBar = React.createClass({
+class HomePage extends React.Component {
   render() {
-    let style = {listStyleType:"none"};
-    let li_style = {display:'inline'};
-    return (
-      <nav>
-	<ul style={style}>
-	  <li style={li_style}> About </li>
-	  <li style={li_style}> Writing </li>
-	</ul>
-      </nav>
-    );
-  }
-});
-
-const HomePage = React.createClass({
-  render() {
-    let style = {margin:0,
-		 padding: 0,
-		 backgroundColor: 'aliceblue'};
     return (
       <html>
-	<head>
-	  <title> yerevancoder.com </title>
-	</head>
-	<body style={style}>
-	  <NavBar/>
-	  <div>
-	    <p> This is a sample Home Page </p>
+	<body>
+	  <div id="react-container"> 
+	    <p> Hello World</p>
 	  </div>
+	  <script src="static/react.js"></script>
+	  <script src="static/react-dom.js"></script>
+	  <script src="src/splash.jsx"> </script>
 	</body>
       </html>
     );
   }
-});
+};
 
 module.exports = HomePage;
