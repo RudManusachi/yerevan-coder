@@ -13,6 +13,7 @@
     "react-dom": "^15.3.0",
     "react-dom-server": "0.0.5",
     "react-universal": "0.0.4",
+    "through": "^2.3.8",
     "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {

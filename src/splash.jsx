@@ -1,7 +1,7 @@
 "use strict";
 
-// const React = require('react'),
-//       ReactDOM = require('react-dom');
+const React = require('react'),
+      ReactDOM = require('react-dom');
 
 class Counter extends React.Component {
   constructor(props) {
