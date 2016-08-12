@@ -1,12 +1,12 @@
 "use strict";
 
 const express = require('express'),
-      ReactDOMServer = require('react-dom/server'),
+      // ReactDOMServer = require('react-dom/server'),
       browserify = require('browserify'),
       body_parser = require('body-parser'),
       through = require('through'),
       fs = require('fs'),
-      React = require('react'),
+      // React = require('react'),
       babel = require('babel-standalone'),
       yerevan_coder = express();
 
@@ -21,8 +21,7 @@ yerevan_coder.get("/*.jsx", (req, res) => {
 	browserify('.' + req.path)
 	.transform(file => {
 	  let data = '';
-	  return through(write, end);
-	  function write(buf) { data += buf; }
+	  return through(buf => data += buf, end);
 	  function end() {
 	    this.queue(
 	      babel.transform(data,
