@@ -4,30 +4,40 @@ const React = require('react'),
       ReactDOM = require('react-dom'),
       Bar = require('./topbar.jsx');
 
-class Counter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {count: props. initial_count};
-    this.tick = this.tick.bind(this);
-  }
+// class Counter extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {count: props. initial_count};
+//     this.tick = this.tick.bind(this);
+//   }
 
-  tick() {
-    this.setState({count:this.state.count + 1});
-  }
+//   tick() {
+//     this.setState({count:this.state.count + 1});
+//   }
 
+//   render() {
+//     return (
+//       <div onClick={this.tick}>
+// 	Clicks: {this.state.count}
+// 	<Bar/>
+//       </div>
+//     );
+//   }
+
+// };
+
+// Counter.propTypes = { initial_count : React.PropTypes.number};
+// Counter.defaultProps = { initial_count : 0};
+
+class HomePage extends React.Component {
   render() {
     return (
-      <div onClick={this.tick}>
-	Clicks: {this.state.count}
+      <div>
 	<Bar/>
       </div>
     );
   }
-
 };
 
-Counter.propTypes = { initial_count : React.PropTypes.number};
-Counter.defaultProps = { initial_count : 0};
-
-ReactDOM.render(<Counter/>,
+ReactDOM.render(<HomePage/>,
 		document.getElementById('react-container'));
