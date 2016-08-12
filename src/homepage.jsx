@@ -1,7 +1,8 @@
 "use strict";
 
 const React = require('react'),
-      ReactDOM = require('react-dom');
+      ReactDOM = require('react-dom'),
+      Bar = require('./topbar.jsx');
 
 class Counter extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class Counter extends React.Component {
     return (
       <div onClick={this.tick}>
 	Clicks: {this.state.count}
+	<Bar/>
       </div>
     );
   }
