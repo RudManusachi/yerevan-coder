@@ -11,26 +11,25 @@ const express = require('express'),
       yerevan_coder = express();
 
 yerevan_coder.get('/', (req, res) => {
-  fs.readFile('src/homepage.jsx', (err, file_data) => {
-    const compiled = babel.transform(file_data,
-				     {presets:['react']}).code,
-	  homepage = eval(compiled);
-    res.end(
-      ReactDOMServer.renderToString(React.createElement(homepage, null))
-    );
+  fs.readFile('public/index.html', (err, file_data) => {
+    res.end(file_data);
   });
 });
 
 yerevan_coder.get("/*.jsx", (req, res) => {
   const f =
 	browserify('.' + req.path)
-	.transform((file) => {
+	.transform(file => {
 	  let data = '';
 	  return through(write, end);
 	  function write(buf) { data += buf; }
 	  function end() {
 	    this.queue(
-	      babel.transform(data, {presets:['react']}).code
+	      babel.transform(data,
+			      // the es2015 is because of Safari
+			      // not keeping up with Chrome and
+			      // others
+			      {presets:['react', 'es2015']}).code
 	    );
 	    this.queue(null);
 	  }	    

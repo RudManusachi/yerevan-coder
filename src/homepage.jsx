@@ -1,19 +1,31 @@
+"use strict";
 
-class HomePage extends React.Component {
+const React = require('react'),
+      ReactDOM = require('react-dom');
+
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {count: props. initial_count};
+    this.tick = this.tick.bind(this);
+  }
+
+  tick() {
+    this.setState({count:this.state.count + 1});
+  }
+
   render() {
     return (
-      <html>
-	<body>
-	  <div id="react-container"> 
-	    <p> Hello World</p>
-	  </div>
-	  <script src="static/react.js"></script>
-	  <script src="static/react-dom.js"></script>
-	  <script src="src/splash.jsx"> </script>
-	</body>
-      </html>
+      <div onClick={this.tick}>
+	Clicks: {this.state.count}
+      </div>
     );
   }
+
 };
 
-module.exports = HomePage;
+Counter.propTypes = { initial_count : React.PropTypes.number};
+Counter.defaultProps = { initial_count : 0};
+
+ReactDOM.render(<Counter/>,
+		document.getElementById('react-container'));
