@@ -9,7 +9,7 @@ class HomePage extends React.Component {
   render() {
     let site_style =
 	{
-	  opacity:'0.90',
+	  // opacity:'0.10',
 	  display:'flex',
 	  paddingLeft:'2em',
 	  paddingTop:'2em',
@@ -24,8 +24,8 @@ class HomePage extends React.Component {
 
     let banner_style =
 	{
-	  opacity:'0.90',
-	  backgroundColor:'#baccc8',
+	  opacity:'0.70',
+	  backgroundColor:'#d8d8d8',
 	  padding:'1em 1em 1em 1em'
 	};
 

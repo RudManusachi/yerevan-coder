@@ -1,12 +1,10 @@
 "use strict";
 
 const express = require('express'),
-      // ReactDOMServer = require('react-dom/server'),
       browserify = require('browserify'),
       body_parser = require('body-parser'),
       through = require('through'),
       fs = require('fs'),
-      // React = require('react'),
       babel = require('babel-standalone'),
       yerevan_coder = express();
 

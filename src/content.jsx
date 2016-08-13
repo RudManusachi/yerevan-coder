@@ -2,11 +2,12 @@ const React = require('react');
 
 module.exports = class _ extends React.Component {
   render() {
+
     let site_content_style =
 	{
 	  marginTop:'3em',
-	  backgroundColor:'#baccc8',
-	  opacity:'0.90',
+	  backgroundColor:'#d8d8d8',
+	  opacity:'0.95',
 	  height:'20em',
 	  padding:'2em'
 	};
