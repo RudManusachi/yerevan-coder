@@ -9,6 +9,7 @@ class HomePage extends React.Component {
   render() {
     let site_style =
 	{
+	  opacity:'0.90',
 	  display:'flex',
 	  paddingLeft:'2em',
 	  paddingTop:'2em',
@@ -23,7 +24,8 @@ class HomePage extends React.Component {
 
     let banner_style =
 	{
-	  backgroundColor:'#f1f1f1',
+	  opacity:'0.90',
+	  backgroundColor:'#baccc8',
 	  padding:'1em 1em 1em 1em'
 	};
 
@@ -36,6 +38,7 @@ class HomePage extends React.Component {
 	      From San Francisco, USA to Yerevan, Armenia
 	    </h3>
 	  </li>
+
 	  <li>
 	    <Content/>
 	  </li>

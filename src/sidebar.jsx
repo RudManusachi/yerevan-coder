@@ -24,7 +24,7 @@ module.exports = class _ extends React.Component {
   render() {
     let nav_style =
 	{
-	  backgroundColor:'#f1f1f1',
+	  backgroundColor:'#baccc8',
 	  padding:'1em 1em 1em 1em'
 	};
     let ul_style = {listStyleType:'none',
