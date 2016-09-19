@@ -8,6 +8,8 @@ const express = require('express'),
       babel = require('babel-standalone'),
       yerevan_coder = express();
 
+const json_parser = body_parser.json();
+
 yerevan_coder.get('/', (req, res) => {
   fs.readFile('public/index.html', (err, file_data) => {
     res.end(file_data);
@@ -21,6 +23,13 @@ yerevan_coder.get("/*.jsx", (req, res) => {
 	  let data = '';
 	  return through(buf => data += buf, end);
 	  function end() {
+	    // console.log(
+	    //   babel.transform(data,
+	    // 		      // the es2015 is because of Safari
+	    // 		      // not keeping up with Chrome and
+	    // 		      // others
+	    // 		      {presets:['react', 'es2015']}).code);
+	    
 	    this.queue(
 	      babel.transform(data,
 			      // the es2015 is because of Safari
@@ -39,8 +48,13 @@ yerevan_coder.get("/*.jsx", (req, res) => {
 
 });
 
-yerevan_coder.use(express.static('.'));
+yerevan_coder.post('/add_event', json_parser, (req, res) => {
+  console.log(req.body);
+  res.end("Hello poster");
+});
 
+
+yerevan_coder.use(express.static('.'));
 yerevan_coder.listen(8080, () => {
   console.log('Created a server');
 });

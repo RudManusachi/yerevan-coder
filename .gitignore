@@ -39,3 +39,5 @@ jspm_packages
 
 # OS X Junk
 .DS_Store
+test.js
+

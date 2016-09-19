@@ -1,48 +1,45 @@
 "use strict";
 
-const React = require('react'),
-      ReactDOM = require('react-dom'),
-      SideBar = require('./sidebar.jsx'),
-      Content = require('./content.jsx');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import BigCalendar from 'react-big-calendar';
+import moment from 'moment';
+
+BigCalendar.setLocalizer(
+  BigCalendar.momentLocalizer(moment)
+);
 
 class HomePage extends React.Component {
+  selected(e) {
+    console.log(e);
+    fetch('http://localhost:8080/add_event',
+	  {method:'post', 
+	   headers: {
+	     'Accept': 'application/json',
+	     'Content-Type': 'application/json'
+	   },
+	   body:JSON.stringify({hello:'Edgar'})})
+      .then(res => {
+	return res.text();
+      })
+      .then(data => console.log('Got back:' + data));
+  }
   render() {
-    let site_style =
-	{
-	  // opacity:'0.10',
-	  display:'flex',
-	  paddingLeft:'2em',
-	  paddingTop:'2em',
-	  paddingRight:'2em'
-	};
-
-    let ul_style =
-	{
-	  marginLeft:'3em',
-	  listStyleType:'none'
-	};
-
-    let banner_style =
-	{
-	  opacity:'0.70',
-	  backgroundColor:'#d8d8d8',
-	  padding:'1em 1em 1em 1em'
-	};
-
+    let s = {height:'500px'};
     return (
-      <div style={site_style}>
-	<SideBar/>
-	<ul style={ul_style}>
-	  <li>
-	    <h3 style={banner_style}>
-	      From San Francisco, USA to Yerevan, Armenia
-	    </h3>
-	  </li>
-
-	  <li>
-	    <Content/>
-	  </li>
-	</ul>
+      <div style={s}>
+	<BigCalendar
+	  selectable
+	  onSelectEvent={this.selected.bind(this)}
+	  events={[ {
+	    'title': 'Long Event',
+	    'allDay':true,
+	    'start': new Date(2016, 8, 17),
+	    'end': new Date(2016, 8, 20),
+	    'desc': 'Big conference for important people'
+	    
+	  }]}
+	  />
       </div>
     );
   }
