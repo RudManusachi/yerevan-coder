@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
+import {SideBar,Head} from './sidebar.jsx';
 
 BigCalendar.setLocalizer(
   BigCalendar.momentLocalizer(moment)
@@ -25,9 +26,11 @@ class HomePage extends React.Component {
       .then(data => console.log('Got back:' + data));
   }
   render() {
-    let s = {height:'500px'};
+    let s = {display: 'flex', flexWrap: 'wrap',  height:'500px'};
     return (
       <div style={s}>
+      <Head/>
+      <SideBar/>
 	<BigCalendar
 	  selectable
 	  onSelectEvent={this.selected.bind(this)}
