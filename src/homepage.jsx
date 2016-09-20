@@ -26,7 +26,7 @@ class HomePage extends React.Component {
       .then(data => console.log('Got back:' + data));
   }
   render() {
-    let s = {display: 'flex', flexWrap: 'wrap',  height:'500px'};
+    let s = {display: 'flex', flexWrap: 'wrap',fontFamily: 'helvetica', height:'500px'};
     return (
       <div style={s}>
       <Head/>
