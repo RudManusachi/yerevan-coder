@@ -22,21 +22,14 @@ yerevan_coder.get("/*.jsx", (req, res) => {
 	.transform(file => {
 	  let data = '';
 	  return through(buf => data += buf, end);
+	  // the es2015 is because of Safari not keeping up with
+	  // Chrome and others
 	  function end() {
-	    // console.log(
-	    //   babel.transform(data,
-	    // 		      // the es2015 is because of Safari
-	    // 		      // not keeping up with Chrome and
-	    // 		      // others
-	    // 		      {presets:['react', 'es2015']}).code);
-	    
-	    this.queue(
-	      babel.transform(data,
-			      // the es2015 is because of Safari
-			      // not keeping up with Chrome and
-			      // others
-			      {presets:['react', 'es2015']}).code
-	    );
+	    const trans_opts =
+		  {presets:['react', 'es2015'],
+		   plugins:["transform-es2015-modules-commonjs",
+			    "transform-async-to-generator"]};
+	    this.queue(babel.transform(data, trans_opts).code);
 	    this.queue(null);
 	  }	    
 	}).bundle();
