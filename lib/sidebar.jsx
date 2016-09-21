@@ -75,7 +75,7 @@ class Head extends React.Component {
 
     return (
       <div style={style}>
-	<img style={logo} src='./graphics/yclogo.png'/>
+	<img style={logo} src='yclogo.png'/>
 	<h4 style={hstyle}>YEREVAN CODER</h4>
 	<h6 style={sidelink}>LOGIN</h6>
 	<h6 style={sidelink}>SIGNUP</h6>

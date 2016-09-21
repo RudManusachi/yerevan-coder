@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
-import {SideBar, Head} from './sidebar.jsx';
+import {SideBar, Head} from './sidebar';
 
 BigCalendar.setLocalizer(
   BigCalendar.momentLocalizer(moment)
