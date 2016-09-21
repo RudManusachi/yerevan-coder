@@ -26,7 +26,6 @@ class SideBar extends React.Component {
       <div style={style}>
 	<ul>
 	  <li style={listyle}>Home</li>
-	  <li style={listyle}>Add Event</li>
 	  <li style={listyle}>About</li>
 	</ul>
       </div>
