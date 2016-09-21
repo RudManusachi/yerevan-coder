@@ -15,9 +15,19 @@ yerevan_coder.get('/', (req, res) => {
 
 yerevan_coder.post('/add_event', json_parser, (req, res) => {
   console.log(req.body);
-  res.end("Hello poster");
+  res.end(JSON.stringify({result:"success"}));
 });
 
+yerevan_coder.get('/init_cal_data', (req, res) => {
+  let example_data = [{
+    'title': 'Long Event',
+    'allDay':true,
+    'start': (new Date(2016, 8, 17)).getTime(),
+    'end': (new Date(2016, 8, 20)).getTime(),
+    'desc': 'Big conference for important people'
+  }];
+  res.end(JSON.stringify(example_data));
+});
 
 yerevan_coder.use(express.static('.'));
 

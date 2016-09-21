@@ -2,54 +2,34 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import BigCalendar from 'react-big-calendar';
-import moment from 'moment';
-import {SideBar, Head} from './sidebar';
+import Header from './header';
+import SideBar from './sidebar';
+import TechCalendar from './calendar';
 
-BigCalendar.setLocalizer(
-  BigCalendar.momentLocalizer(moment)
-);
-
-class HomePage extends React.Component {
-  selected(e) {
-    console.log(e);
-    fetch('http://localhost:8080/add_event',
-	  {method:'post', 
-	   headers: {
-	     'Accept': 'application/json',
-	     'Content-Type': 'application/json'
-	   },
-	   body:JSON.stringify({hello:'Edgar'})})
-      .then(res => {
-	return res.text();
-      })
-      .then(data => console.log('Got back:' + data));
+class YCoder extends React.Component {
+  constructor () {
+    super();
+    this.init_data_url =
+      'http://localhost:8080/init_cal_data';
   }
   render() {
     let s = {display: 'flex',
 	     flexWrap: 'wrap',
 	     fontFamily: 'helvetica',
 	     height:'500px'};
+    
     return (
-      <div style={s}>
-	<Head/>
-	<SideBar/>
-	<BigCalendar
-	  selectable
-	  onSelectEvent={this.selected.bind(this)}
-	  events={[ {
-	    'title': 'Long Event',
-	    'allDay':true,
-	    'start': new Date(2016, 8, 17),
-	    'end': new Date(2016, 8, 20),
-	    'desc': 'Big conference for important people'
-	    
-	  }]}
-	  />
+      <div>
+	<Header/>
+	<div style={s}>
+	  <SideBar/>
+	  <TechCalendar data_url={this.init_data_url}/>
+	</div>
       </div>
     );
   }
 };
 
-ReactDOM.render(<HomePage/>,
-		document.getElementById('react-container'));
+ReactDOM
+  .render(<YCoder/>,
+	  document.getElementById('react-container'));
