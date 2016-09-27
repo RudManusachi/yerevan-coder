@@ -9,25 +9,28 @@ class SideBar extends React.Component {
       alignSelf: 'flexEnd',
       flexDirection: 'column',
       justifyContent: 'center',
-      height: '500px',
-      width: '150px',
+      listStyle: 'none',
+      width: '9em',
       backgroundColor: 'rgba(225,135,40,0.2)',
       color: '#484848',
       verticalAlign: 'middle',
-      paddingTop: '2rem'
+      paddingTop: '1rem',
+      clear: 'both'
 
     };
     let listyle = {
       textAlign: 'center',
-      padding: '1rem',
-      fontFamily: 'helvetica'
+      padding: '20px',
+      textDecoration: 'none',
+      
+     
     }; 
 
     return (
       <div style={style}>
 	<ul>
-	  <li style={listyle}>Home</li>
-	  <li style={listyle}>About</li>
+	  <li style={listyle}><a href='#0'>Home</a></li>
+	  <li style={listyle}><a href='#0'>About</a></li>
 	</ul>
       </div>
     );

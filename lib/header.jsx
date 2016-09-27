@@ -27,17 +27,20 @@ class Header extends React.Component {
     };
 
     let sidelink = {
-      display: 'inline',
+      display: 'flex',
       justifyContent: 'flexEnd',
       alignItems: 'flexEnd',
       padding: '2em',
       float: 'right',
-      listStyle: 'none'
+      listStyle: 'none',
+      textDecoration: 'none'
     };
 
      let item = {
-      display: 'inline',
-      padding: '1em'
+      display: 'inline-block',
+      padding: '20px',
+      textDecoration:'none'
+
     };
 
     return (
@@ -45,9 +48,9 @@ class Header extends React.Component {
 
 	       <img style={head} src='public/ycHEAD.png'/>
          <ul style={sidelink}>
-	         <li style={item}>Login </li>
-	         <li style={item}>SignUp </li>
-	         <li style={item}>Forgot </li>
+	         <li style={item}><a href='#0'>Login</a></li>
+	         <li style={item}><a href='#0'>SignUp</a></li>
+	         <li style={item}><a href='#0'>Forgot</a></li>
          </ul>
       </div>
     );
