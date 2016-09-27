@@ -6,40 +6,30 @@ export default
 class Header extends React.Component {
   render() {
     let style = {
-      flexDirection: 'row',
-    
-      whiteSpace: 'noWrap',
-     
-     
+      display: 'inline-block',
       backgroundColor: 'rgba(225,135,40,0.2)',
       color: '#484848',
-      padding: '1em'
+      padding: '1rem',
+      width: '100%'
     };
 
    
 
     let head = {
-      paddingLeft: '6em',
-      
-      maxWidth: '30em',
-      display: 'inline'
+      maxWidth: '450px',
       
     };
 
-    let sidelink = {
-      display: 'flex',
-      justifyContent: 'flexEnd',
-      alignItems: 'flexEnd',
-      padding: '2em',
-      float: 'right',
-      listStyle: 'none',
-      textDecoration: 'none'
+    let account = {
+      display: 'inline-flex',
+      listStyle: 'none'
     };
 
      let item = {
-      display: 'inline-block',
-      padding: '20px',
-      textDecoration:'none'
+      textDecoration: 'none',
+      padding: '.5rem'
+      
+      
 
     };
 
@@ -47,10 +37,10 @@ class Header extends React.Component {
       <div style={style}>
 
 	       <img style={head} src='public/ycHEAD.png'/>
-         <ul style={sidelink}>
-	         <li style={item}><a href='#0'>Login</a></li>
-	         <li style={item}><a href='#0'>SignUp</a></li>
-	         <li style={item}><a href='#0'>Forgot</a></li>
+         <ul style={account}>
+	         <li><a style={item} href='#0'>Login</a></li>
+	         <li><a style={item} href='#0'>SignUp</a></li>
+	         <li><a style={item} href='#0'>Forgot</a></li>
          </ul>
       </div>
     );
