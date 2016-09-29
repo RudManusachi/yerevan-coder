@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from './header';
-import SideBar from './sidebar';
+
 import TechCalendar from './calendar';
 
 class YCoder extends React.Component {
@@ -22,7 +22,7 @@ class YCoder extends React.Component {
       <div>
 	<Header/>
 	<div style={s}>
-	  <SideBar/>
+	 
 	  <TechCalendar data_url={this.init_data_url}/>
 	</div>
       </div>
