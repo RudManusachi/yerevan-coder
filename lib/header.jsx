@@ -1,70 +1,70 @@
 "use strict";
 
 import React from 'react';
-
 export default
 class Header extends React.Component {
   render() {
-
-    let siteHeader = {
-      display: 'flex-wrap',
-      backgroundColor: 'rgba(225,135,40,0.2)',
-      color: '#484848',
+    let header = {
+      backgroundColor: '#F4F9FC',
+      color: '#D0DDE4',
       padding: '1rem',
       width: '100%'
-    };
 
-    let head = {
-      maxWidth: '450px',
-      
     };
-    let nav = {
-      display: 'inline-flex',
-      
-      position: 'relative',
+    let logo = {
+      width: '25rem',
+      justifyContent: 'center'
+    };
+    let headerLinks = {
+      display: 'flex',
       left: '5rem'
-
     };
-
-    let navLinks = {
+    let siteNav = {
       listStyle: 'none',
-      display: 'inline-flex'
+      display: 'flex'
     };
-
-    let navLinksSelect = {
+    let siteNavSpec = {
       textDecoration: 'none',
-     
+      height:'1.5rem',
+      width:'4rem',
+      color: '#F4F9FC',
+      backgroundColor:'#9B4408',
+      margin: '.5rem',
+      padding: ['.25rem 1rem']
 
     };
-
-    let accountLinks = {
+    let accNav = {
       listStyle: 'none',
-      display: 'inline-flex'
+      display: 'flex',
+      marginLeft: 'auto',
+      paddingRight: '2rem'
     };
-
-     let accountLinksSelect = {
+     let accNavSpec = {
       textDecoration: 'none',
-      
-
+      height:'1.5rem',
+      width:'4rem',
+      color: '#F4F9FC',
+      backgroundColor:'#2B5D78',
+      margin: '.5rem',
+      padding: ['.25rem 1rem']
     };
 
     return (
-
-    <header style={siteHeader}>
-      <a href='#'><img style={head} src='public/ycHEAD.png'/></a>
-        <div style={nav}>
-          <ul style={navLinks}>
-             <li><a style={navLinksSelect} href='#0'>Home</a></li>
-             <li><a style={navLinksSelect} href='#0'>About</a></li>
+    <header style={header}>
+        <a href='#'><img style={logo}
+          src='public/ycHEAD.png'/></a>
+      <nav style={headerLinks}>
+          <ul style={siteNav}>
+             <li><a style={siteNavSpec} href='#0'>Home</a></li>
+             <li><a style={siteNavSpec} href='#0'>About</a></li>
            </ul>
-         <ul style={accountLinks}>
-	         <li><a style={accountLinksSelect} href='#0'>Login</a></li>
-	         <li><a style={accountLinksSelect} href='#0'>SignUp</a></li>
-	         <li><a style={accountLinksSelect} href='#0'>Forgot</a></li>
+         <ul style={accNav}>
+	         <li><a style={accNavSpec} href='#0'>Login</a></li>
+	         <li><a style={accNavSpec} href='#0'>SignUp</a></li>
+	         <li><a style={accNavSpec} href='#0'>Forgot</a></li>
          </ul>
-      </div>
-
-    </header>
+    </nav>
+  </header>
     );
   }
 };
