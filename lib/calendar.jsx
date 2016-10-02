@@ -47,8 +47,14 @@ class TechCalendar extends React.Component {
   }
 
   render () {
+let cal = {
+  width:'100%'
+};
+
+
     return (
       <BigCalendar
+        style={cal}
 	selectable
 	onSelectSlot={this.selected_date}
 	events={this.state.cal_data}
