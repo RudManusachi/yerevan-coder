@@ -56,6 +56,7 @@ class Header extends React.Component {
       margin: '.5rem',
       padding: ['.25rem 1rem']
     };
+  
 
     return (
     <header style={header}>
@@ -72,8 +73,10 @@ class Header extends React.Component {
 	         <li><a style={accNavSpec} href='#0'>SignUp</a></li>
 	         <li><a style={accNavSpec} href='#0'>Forgot</a></li>
          </ul>
-    </nav>
-  </header>
+       </nav>
+
+     </header>
+
     );
   }
 };
