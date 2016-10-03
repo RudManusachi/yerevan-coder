@@ -44,8 +44,7 @@ class Header extends React.Component {
     let accNav = {
       display: 'flex',
       listStyle: 'none',
-      marginLeft: 'auto',
-      paddingRight: '2rem'
+      marginLeft: 'auto'
     };
      let accNavSpec = {
       textDecoration: 'none',

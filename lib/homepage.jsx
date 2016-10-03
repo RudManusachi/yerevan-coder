@@ -13,10 +13,11 @@ class YCoder extends React.Component {
       'http://localhost:8080/init_cal_data';
   }
   render() {
-    let s = {display: 'flex',
-	     flexWrap: 'wrap',
-	     height: '500px',
-       width: '100%'
+    let s = {
+      display: 'flex',
+	    flexWrap: 'wrap',
+      width: '100%',
+      height: '500px'
      };
 
     return (

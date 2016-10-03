@@ -52,8 +52,10 @@ let cal = {
 };
 
 
+
     return (
       <BigCalendar
+        id={'downSize'}
         style={cal}
 	selectable
 	onSelectSlot={this.selected_date}
