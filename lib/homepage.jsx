@@ -15,7 +15,8 @@ class YCoder extends React.Component {
   render() {
     let s = {display: 'flex',
 	     flexWrap: 'wrap',
-	     height:'500px'
+	     height: '500px',
+       width: '100%'
      };
 
     return (

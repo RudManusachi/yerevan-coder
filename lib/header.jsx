@@ -8,7 +8,7 @@ class Header extends React.Component {
       backgroundColor: '#F4F9FC',
       color: '#D0DDE4',
       padding: '2%',
-      width: '100%'
+      maxWidth: '100%'
 
     };
     let empty = {
@@ -19,13 +19,13 @@ class Header extends React.Component {
       width: '40%',
       margin: 'auto',
       display: 'flex',
-      paddingRight: '130px'
+      paddingRight: '8.5%'
     };
     let slogan = {
       display: 'flex',
       justifyContent: 'center',
       paddingBottom: '1rem',
-      paddingRight: '130px'
+      paddingRight: '8%'
     };
     let headerLinks = {
       display: 'flex',
@@ -56,7 +56,7 @@ class Header extends React.Component {
       margin: '.5rem',
       padding: ['.25rem 1rem']
     };
-  
+
 
     return (
     <header style={header}>

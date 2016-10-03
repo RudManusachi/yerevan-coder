@@ -14,14 +14,15 @@ let subHead = {
 let subHLinks = {
   listStyle: 'none',
   display: 'flex',
-  paddingRight: '95px'
+  paddingRight: '7%',
+  alignItems: 'center'
 };
 let tabs = {
   textDecoration: 'none',
   backgroundColor: '#60859A',
   color: '#F4F9FC',
-  marginTop: '1rem',
-  padding: ['.5rem .5rem'],
+  padding: ['.25rem .5rem'],
+  margin: '.5rem',
   height: '50%'
 
 };
