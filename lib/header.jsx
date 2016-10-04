@@ -14,41 +14,25 @@ class Header extends React.Component {
     let hello = {
       padding: '20%'
     };
-
     let logo = {
       display: 'flex',
       width: '95%'
-
     };
     let slogan = {
       display: 'flex',
       justifyContent: 'center',
 
     };
-
     let siteNav = {
       display: 'flex',
       listStyle: 'none'
     };
-
-    let accNav = {
-      display: 'flex',
-      listStyle: 'none',
-      marginLeft: 'auto'
-    };
-
     let subHead = {
       display: 'flex',
       width: '100%',
       height: '150px',
       backgroundColor: '#B8BBBD',
       justifyContent: 'center'
-    };
-    let subHLinks = {
-      listStyle: 'none',
-      display: 'flex',
-      paddingRight: '7%',
-      alignItems: 'center'
     };
     let tabs0 = {
       textDecoration: 'none',
@@ -59,10 +43,20 @@ class Header extends React.Component {
       height: '50%'
     };
     let tabs1 = {
-
+      textDecoration: 'none',
+      backgroundColor: '#60859A',
+      color: '#F4F9FC',
+      padding: ['.25rem .5rem'],
+      margin: '.5rem',
+      height: '50%'
     };
     let tabs2 = {
-      
+      textDecoration: 'none',
+      backgroundColor: '#60859A',
+      color: '#F4F9FC',
+      padding: ['.25rem .5rem'],
+      margin: '.5rem',
+      height: '50%'
     };
 
     let page1 = {
@@ -103,18 +97,14 @@ class Header extends React.Component {
         <p style={slogan}>One Calendar for All of Yerevan's Tech Events</p>
       </div>
 
-       <div style={subHead}>
-         <ul style={siteNav}>
-            <li><a style={tabs0} href='#about'>About</a></li>
-          </ul>
-        <ul style={accNav}>
+       <div style={subContainer}>
+         <ul style={directory}>
+          <li><a style={tabs0} href='#about'>About</a></li>
           <li><a style={tabs1} href='#login'>Login</a></li>
           <li><a style={tabs1} href='#signup'>SignUp</a></li>
           <li><a style={tabs1} href='#forgot'>Forgot</a></li>
-        </ul>
-         <ul style={subHLinks}>
-           <li><a style={tabs2} href='#iterate'>Iterate<br/>Hackerspace</a></li>
-           <li><a style={tabs2} href='#connect'>Meet<br/>Us</a></li>
+          <li><a style={tabs2} href='#iterate'>Iterate<br/>Hackerspace</a></li>
+          <li><a style={tabs2} href='#connect'>Meet<br/>Us</a></li>
          </ul>
        </div>
 
@@ -124,9 +114,9 @@ class Header extends React.Component {
        </div>
 
        <div style={page2}>
-           <a id={'login'}>login stuffs</a>
-           <a id={'signup'}>signup credentials</a>
-           <a id={'forgot'}>steps to take</a>
+           <a id={'account'}>login stuffs</a>
+           <a id={'account'}>signup credentials</a>
+           <a id={'account'}>steps to take</a>
        </div>
 
 
