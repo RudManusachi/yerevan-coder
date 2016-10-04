@@ -4,7 +4,7 @@ import React from 'react';
 export default
 class Header extends React.Component {
   render() {
-    let header = {
+    let home = {
       display: 'flex',
       flexDirection: 'column',
       backgroundColor: '#F4F9FC',
@@ -23,42 +23,44 @@ class Header extends React.Component {
       justifyContent: 'center',
 
     };
-    let siteNav = {
-      display: 'flex',
-      listStyle: 'none'
+    let subContainer = {
+      display: 'flex'
+
     };
-    let subHead = {
+    let directory = {
       display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      listStyle: 'none',
+      fontSize: '2rem',
       width: '100%',
       height: '150px',
-      backgroundColor: '#B8BBBD',
-      justifyContent: 'center'
+      backgroundColor: '#B8BBBD'
     };
     let tabs0 = {
       textDecoration: 'none',
-      backgroundColor: '#60859A',
       color: '#F4F9FC',
-      padding: ['.25rem .5rem'],
-      margin: '.5rem',
+      padding: ['.5rem 1.5rem'],
       height: '50%'
     };
     let tabs1 = {
       textDecoration: 'none',
-      backgroundColor: '#60859A',
       color: '#F4F9FC',
-      padding: ['.25rem .5rem'],
-      margin: '.5rem',
+      padding: ['.5rem 1.5rem'],
       height: '50%'
     };
     let tabs2 = {
       textDecoration: 'none',
-      backgroundColor: '#60859A',
       color: '#F4F9FC',
-      padding: ['.25rem .5rem'],
-      margin: '.5rem',
+      padding: ['.5rem 1.5rem'],
       height: '50%'
     };
-
+    let tabs3 = {
+      textDecoration: 'none',
+      color: '#F4F9FC',
+      padding: ['.5rem 1.5rem'],
+      height: '50%'
+    };
     let page1 = {
       display: 'flex',
       width: '100%',
@@ -91,7 +93,7 @@ class Header extends React.Component {
 
 
     return (
-    <header style={header}>
+    <header style={home}>
       <div style={hello}>
         <img style={logo} src='public/ycHEAD.png'/>
         <p style={slogan}>One Calendar for All of Yerevan's Tech Events</p>
@@ -99,33 +101,27 @@ class Header extends React.Component {
 
        <div style={subContainer}>
          <ul style={directory}>
-          <li><a style={tabs0} href='#about'>About</a></li>
-          <li><a style={tabs1} href='#login'>Login</a></li>
-          <li><a style={tabs1} href='#signup'>SignUp</a></li>
-          <li><a style={tabs1} href='#forgot'>Forgot</a></li>
-          <li><a style={tabs2} href='#iterate'>Iterate<br/>Hackerspace</a></li>
-          <li><a style={tabs2} href='#connect'>Meet<br/>Us</a></li>
+          <li><a style={tabs0} href='#calendar'>Enter</a></li>
+          <li><a style={tabs1} href='#account'>Login</a></li>
+          <li><a style={tabs2} href='#groups'>Meet Us</a></li>
+          <li><a style={tabs3} href='#about'>About</a></li>
          </ul>
        </div>
 
      <content>
        <div style={page1}>
-           <a id={'about'}>information about site, why it was made</a>
+          <a id={'calendar'}>figure out how to get cal in here</a>
        </div>
-
        <div style={page2}>
-           <a id={'account'}>login stuffs</a>
-           <a id={'account'}>signup credentials</a>
-           <a id={'account'}>steps to take</a>
+          <a id={'account'}>account login</a>
+          <a id={'account'}>account signup</a>
+          <a id={'account'}>account forgot</a>
        </div>
-
-
        <div style={page3}>
-           <a id={'iterate'}>about iterate hackerspace</a>
+          <a id={'groups'}>iterate, meetUp account, facebook</a>
        </div>
-
        <div style={page4}>
-           <a id={'connect'}>link to meetup and facebook group</a>
+          <a id={'About'}>how site was made, etc.</a>
        </div>
      </content>
      </header>
