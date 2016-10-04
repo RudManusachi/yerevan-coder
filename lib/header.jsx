@@ -9,69 +9,135 @@ class Header extends React.Component {
       flexDirection: 'column',
       backgroundColor: '#F4F9FC',
       color: '#D0DDE4',
-      padding: '2%',
-      maxWidth: '100%'
+      width: '100%'
+    };
+    let hello = {
+      padding: '20%'
     };
 
     let logo = {
       display: 'flex',
-      width: '40%',
-      margin: 'auto',
-      paddingRight: '8.5%'
+      width: '95%'
+
     };
     let slogan = {
       display: 'flex',
       justifyContent: 'center',
-      paddingBottom: '1rem',
-      paddingRight: '8%'
+
     };
-    let headerLinks = {
-      display: 'flex',
-      fontSize: '1rem'
-    };
+
     let siteNav = {
       display: 'flex',
       listStyle: 'none'
     };
-    let siteNavSpec = {
-      textDecoration: 'none',
-      backgroundColor:'#9B4408',
-      color: '#F4F9FC',
-      margin: '.5rem',
-      padding: ['.25rem 1rem']
 
-    };
     let accNav = {
       display: 'flex',
       listStyle: 'none',
       marginLeft: 'auto'
     };
-     let accNavSpec = {
+
+    let subHead = {
+      display: 'flex',
+      width: '100%',
+      height: '150px',
+      backgroundColor: '#B8BBBD',
+      justifyContent: 'center'
+    };
+    let subHLinks = {
+      listStyle: 'none',
+      display: 'flex',
+      paddingRight: '7%',
+      alignItems: 'center'
+    };
+    let tabs0 = {
       textDecoration: 'none',
-      backgroundColor:'#2B5D78',
+      backgroundColor: '#60859A',
       color: '#F4F9FC',
+      padding: ['.25rem .5rem'],
       margin: '.5rem',
-      padding: ['.25rem 1rem']
+      height: '50%'
+    };
+    let tabs1 = {
+
+    };
+    let tabs2 = {
+      
+    };
+
+    let page1 = {
+      display: 'flex',
+      width: '100%',
+      height: '1000px',
+      background:'#F4F7FC',
+      color:'#B7BBBD'
+    };
+    let page2 = {
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      height: '1000px',
+      background: '#F4F5FC',
+      color:'#B7BBBD'
+    };
+    let page3 = {
+      display: 'flex',
+      width: '100%',
+      height: '1000px',
+      background: '#F4F5FC',
+      color:'#B7BBBD'
+    };
+    let page4 = {
+      display: 'flex',
+      width: '100%',
+      height: '1000px',
+      background: '#F4F5FC',
+      color:'#B7BBBD'
     };
 
 
     return (
     <header style={header}>
-      <div>
+      <div style={hello}>
         <img style={logo} src='public/ycHEAD.png'/>
-      </div>
         <p style={slogan}>One Calendar for All of Yerevan's Tech Events</p>
-      <nav style={headerLinks}>
-          <ul style={siteNav}>
-             <li><a style={siteNavSpec} href='#0'>Home</a></li>
-             <li><a style={siteNavSpec} href='#0'>About</a></li>
-           </ul>
-         <ul style={accNav}>
-	         <li><a style={accNavSpec} href='#0'>Login</a></li>
-	         <li><a style={accNavSpec} href='#0'>SignUp</a></li>
-	         <li><a style={accNavSpec} href='#0'>Forgot</a></li>
+      </div>
+
+       <div style={subHead}>
+         <ul style={siteNav}>
+            <li><a style={tabs0} href='#about'>About</a></li>
+          </ul>
+        <ul style={accNav}>
+          <li><a style={tabs1} href='#login'>Login</a></li>
+          <li><a style={tabs1} href='#signup'>SignUp</a></li>
+          <li><a style={tabs1} href='#forgot'>Forgot</a></li>
+        </ul>
+         <ul style={subHLinks}>
+           <li><a style={tabs2} href='#iterate'>Iterate<br/>Hackerspace</a></li>
+           <li><a style={tabs2} href='#connect'>Meet<br/>Us</a></li>
          </ul>
-       </nav>
+       </div>
+
+     <content>
+       <div style={page1}>
+           <a id={'about'}>information about site, why it was made</a>
+       </div>
+
+       <div style={page2}>
+           <a id={'login'}>login stuffs</a>
+           <a id={'signup'}>signup credentials</a>
+           <a id={'forgot'}>steps to take</a>
+       </div>
+
+
+       <div style={page3}>
+           <a id={'iterate'}>about iterate hackerspace</a>
+       </div>
+
+       <div style={page4}>
+           <a id={'connect'}>link to meetup and facebook group</a>
+       </div>
+     </content>
      </header>
 
     );
