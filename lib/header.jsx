@@ -1,8 +1,20 @@
 "use strict";
 
+var Modal = require('react-modal');
+
 import React from 'react';
 export default
 class Header extends React.Component {
+  constructor () {
+     super();
+     this.state = {open:false}
+     this.openModal = this.openModal.bind(this);
+     this.closeModal = this.closeModal.bind(this);
+   }
+   openModal () {
+      this.setState({open: true}); }
+   closeModal () {
+     this.setState({open: false}); }
   render() {
     let home = {
       display: 'flex',
@@ -12,7 +24,8 @@ class Header extends React.Component {
       width: '100%'
     };
     let hello = {
-      padding: '20%'
+      padding: '30%',
+      top: '102px'
     };
     let logo = {
       display: 'flex',
@@ -20,21 +33,23 @@ class Header extends React.Component {
     };
     let slogan = {
       display: 'flex',
-      justifyContent: 'center',
-
+      justifyContent: 'center'
     };
     let subContainer = {
-      display: 'flex'
+      display: 'flex',
+      zIndex: '9999',
+      position: 'fixed',
+      width: '100%'
 
     };
-    let directory = {
+    let modalDirectory = {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       listStyle: 'none',
       fontSize: '2rem',
       width: '100%',
-      height: '150px',
+      height: '100px',
       backgroundColor: '#B8BBBD'
     };
     let tabs0 = {
@@ -61,34 +76,25 @@ class Header extends React.Component {
       padding: ['.5rem 1.5rem'],
       height: '50%'
     };
-    let page1 = {
-      display: 'flex',
-      width: '100%',
-      height: '1000px',
-      background:'#F4F7FC',
-      color:'#B7BBBD'
+    let modal = {
+
     };
-    let page2 = {
-      display: 'flex',
-      flexDirection: 'column',
-      width: '100%',
-      height: '1000px',
-      background: '#F4F5FC',
-      color:'#B7BBBD'
+
+    let modal1 = {
+
     };
-    let page3 = {
-      display: 'flex',
-      width: '100%',
-      height: '1000px',
-      background: '#F4F5FC',
-      color:'#B7BBBD'
+    let mamaModal = {
+
     };
-    let page4 = {
-      display: 'flex',
-      width: '100%',
-      height: '1000px',
-      background: '#F4F5FC',
-      color:'#B7BBBD'
+
+    let modal2 = {
+    };
+    let modal3 = {
+
+    };
+    let modal4 = {
+
+
     };
 
 
@@ -100,7 +106,7 @@ class Header extends React.Component {
       </div>
 
        <div style={subContainer}>
-         <ul style={directory}>
+         <ul style={modalDirectory}>
           <li><a style={tabs0} href='#calendar'>Enter</a></li>
           <li><a style={tabs1} href='#account'>Login</a></li>
           <li><a style={tabs2} href='#groups'>Meet Us</a></li>
@@ -108,21 +114,43 @@ class Header extends React.Component {
          </ul>
        </div>
 
+       <div>
+          <button onClick={this.openModal}>Open Modal</button>
+          <Modal isOpen={this.state.open}>
+            <h1>Basic Modal</h1>
+            <button onClick={this.closeModal}>Close</button>
+            <input />
+            <input />
+          </Modal>
+        </div>
+
      <content>
-       <div style={page1}>
-          <a id={'calendar'}>figure out how to get cal in here</a>
-       </div>
-       <div style={page2}>
-          <a id={'account'}>account login</a>
-          <a id={'account'}>account signup</a>
-          <a id={'account'}>account forgot</a>
-       </div>
-       <div style={page3}>
-          <a id={'groups'}>iterate, meetUp account, facebook</a>
-       </div>
-       <div style={page4}>
-          <a id={'About'}>how site was made, etc.</a>
-       </div>
+
+         <div style={modal} id={'calendar'}>
+          <div style={modal1}>
+            <a href='#'>Close</a>
+          </div>
+         </div>
+
+
+          <div style={modal} id={'account'}>
+            <div style={modal2}>
+              <a href='#'>Close</a>
+            </div>
+          </div>
+
+          <div style={modal} id={'groups'}>
+            <div style={modal3}>
+              <a href='#'>Close</a>
+            </div>
+          </div>
+
+          <div style={modal} id={'about'}>
+            <div style={modal4}>
+              <a href='#'>Close</a>
+            </div>
+          </div>
+
      </content>
      </header>
 
