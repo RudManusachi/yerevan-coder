@@ -40,7 +40,6 @@ class Header extends React.Component {
       zIndex: '9999',
       position: 'fixed',
       width: '100%'
-
     };
     let modalDirectory = {
       display: 'flex',
@@ -49,57 +48,43 @@ class Header extends React.Component {
       listStyle: 'none',
       fontSize: '2rem',
       width: '100%',
-      height: '100px',
+      height: '75px',
       backgroundColor: '#B8BBBD'
     };
-    let tabs0 = {
+    let tabs = {
       textDecoration: 'none',
       color: '#F4F9FC',
       padding: ['.5rem 1.5rem'],
       height: '50%'
     };
-    let tabs1 = {
-      textDecoration: 'none',
-      color: '#F4F9FC',
-      padding: ['.5rem 1.5rem'],
-      height: '50%'
-    };
-    let tabs2 = {
-      textDecoration: 'none',
-      color: '#F4F9FC',
-      padding: ['.5rem 1.5rem'],
-      height: '50%'
-    };
-    let tabs3 = {
-      textDecoration: 'none',
-      color: '#F4F9FC',
-      padding: ['.5rem 1.5rem'],
-      height: '50%'
-    };
-    let modal = {
 
+    let openButton = {
+      border: 'none',
+      backgroundColor: '#B8BBBD'
     };
 
-    let modal1 = {
+    let modalCont = {
+      overlay: {
+        backgroundColor: '#F4F9FC'
+      },
+      content: {
+        top: '75px',
+        borderRadius: '10px'
 
+      }
     };
-    let mamaModal = {
 
-    };
-
-    let modal2 = {
-    };
-    let modal3 = {
-
-    };
-    let modal4 = {
-
-
+    let xButton = {
+      marginLeft: 'auto',
+      padding: ['0 .5rem'],
+      fontFamily: ['Poppins, sans-serif'],
+      justifyContent: 'flex-end'
     };
 
 
     return (
     <header style={home}>
+
       <div style={hello}>
         <img style={logo} src='public/ycHEAD.png'/>
         <p style={slogan}>One Calendar for All of Yerevan's Tech Events</p>
@@ -107,51 +92,53 @@ class Header extends React.Component {
 
        <div style={subContainer}>
          <ul style={modalDirectory}>
-          <li><a style={tabs0} href='#calendar'>Enter</a></li>
-          <li><a style={tabs1} href='#account'>Login</a></li>
-          <li><a style={tabs2} href='#groups'>Meet Us</a></li>
-          <li><a style={tabs3} href='#about'>About</a></li>
+
+            <button onClick={this.openModal} style={openButton}>
+              <li><a style={tabs}>Enter
+              </a></li></button>
+            <Modal
+              style={modalCont}
+              isOpen={this.state.open}>
+              <p>Calendar</p>
+                <button onClick={this.closeModal}
+                  style={xButton}>x</button>
+            </Modal>
+
+            <button onClick={this.openModal} style={openButton}>
+              <li><a style={tabs}>Login
+              </a></li></button>
+            <Modal
+              style={modalCont}
+              isOpen={this.state.open}>
+              <p>Account</p>
+                <button onClick={this.closeModal}
+                  style={xButton}>x</button>
+            </Modal>
+
+            <button onClick={this.openModal} style={openButton}>
+              <li><a style={tabs}>Meet Us
+              </a></li></button>
+            <Modal
+              style={modalCont}
+              isOpen={this.state.open}>
+              <p>Say Hello!</p>
+                <button onClick={this.closeModal}
+                  style={xButton}>x</button>
+            </Modal>
+
+            <button onClick={this.openModal} style={openButton}>
+              <li><a style={tabs}>About
+              </a></li></button>
+            <Modal
+              style={modalCont}
+              isOpen={this.state.open}>
+              <p></p>
+              <button onClick={this.closeModal}
+                style={xButton}>x</button>
+            </Modal>
+
          </ul>
        </div>
-
-       <div>
-          <button onClick={this.openModal}>Open Modal</button>
-          <Modal isOpen={this.state.open}>
-            <h1>Basic Modal</h1>
-            <button onClick={this.closeModal}>Close</button>
-            <input />
-            <input />
-          </Modal>
-        </div>
-
-     <content>
-
-         <div style={modal} id={'calendar'}>
-          <div style={modal1}>
-            <a href='#'>Close</a>
-          </div>
-         </div>
-
-
-          <div style={modal} id={'account'}>
-            <div style={modal2}>
-              <a href='#'>Close</a>
-            </div>
-          </div>
-
-          <div style={modal} id={'groups'}>
-            <div style={modal3}>
-              <a href='#'>Close</a>
-            </div>
-          </div>
-
-          <div style={modal} id={'about'}>
-            <div style={modal4}>
-              <a href='#'>Close</a>
-            </div>
-          </div>
-
-     </content>
      </header>
 
     );
