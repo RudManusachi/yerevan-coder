@@ -1,20 +1,31 @@
 "use strict";
 
 var Modal = require('react-modal');
-
+import BigCalendar from 'react-big-calendar';
 import React from 'react';
 export default
 class Header extends React.Component {
   constructor () {
      super();
-     this.state = {open:false}
+     this.state = {
+       activeModal: null
+     };
+
      this.openModal = this.openModal.bind(this);
      this.closeModal = this.closeModal.bind(this);
-   }
-   openModal () {
-      this.setState({open: true}); }
-   closeModal () {
-     this.setState({open: false}); }
+    //  this.handleModalChangeEnter = this.handleModalChange.bind(this, true);
+    //  this.handleModalChangeLogin = this.handleModalChange.bind(this, false);
+  }
+  openModal (modalName) {
+     this.setState({
+       activeModal: modalName
+     });
+  }
+  closeModal () {
+     this.setState({
+       activeModal: null
+     });
+  }
   render() {
     let home = {
       display: 'flex',
@@ -39,28 +50,27 @@ class Header extends React.Component {
       display: 'flex',
       zIndex: '9999',
       position: 'fixed',
-      width: '100%'
-    };
-    let modalDirectory = {
-      display: 'flex',
+      width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      listStyle: 'none',
       fontSize: '2rem',
       width: '100%',
       height: '75px',
       backgroundColor: '#B8BBBD'
     };
+    let allTabs = {
+      display: 'flex',
+      listStyle: 'none'
+
+    };
     let tabs = {
       textDecoration: 'none',
       color: '#F4F9FC',
       padding: ['.5rem 1.5rem'],
-      height: '50%'
-    };
-
-    let openButton = {
       border: 'none',
-      backgroundColor: '#B8BBBD'
+      height: '50%',
+      backgroundColor: '#B8BBBD',
+      liStyle: 'none'
     };
 
     let modalCont = {
@@ -90,57 +100,121 @@ class Header extends React.Component {
         <p style={slogan}>One Calendar for All of Yerevan's Tech Events</p>
       </div>
 
-       <div style={subContainer}>
-         <ul style={modalDirectory}>
+      <div style={subContainer}>
+        <ul style={allTabs}>
 
-            <button onClick={this.openModal} style={openButton}>
-              <li><a style={tabs}>Enter
-              </a></li></button>
-            <Modal
-              style={modalCont}
-              isOpen={this.state.open}>
-              <p>Calendar</p>
-                <button onClick={this.closeModal}
-                  style={xButton}>x</button>
-            </Modal>
+          <li>
+            <button
+              onClick={() => this.openModal('login')}
+              style={tabs}>
+              Enter
+            </button>
+          </li>
 
-            <button onClick={this.openModal} style={openButton}>
-              <li><a style={tabs}>Login
-              </a></li></button>
-            <Modal
-              style={modalCont}
-              isOpen={this.state.open}>
-              <p>Account</p>
-                <button onClick={this.closeModal}
-                  style={xButton}>x</button>
-            </Modal>
+          <li>
+            <button
+              onClick={() => this.openModal('calendar')}
+              style={tabs}>
+              Calendar
+            </button>
+          </li>
 
-            <button onClick={this.openModal} style={openButton}>
-              <li><a style={tabs}>Meet Us
-              </a></li></button>
-            <Modal
-              style={modalCont}
-              isOpen={this.state.open}>
-              <p>Say Hello!</p>
-                <button onClick={this.closeModal}
-                  style={xButton}>x</button>
-            </Modal>
+          <li>
+            <button
+              onClick={() => this.openModal('team')}
+              style={tabs}>
+              Meet Us
+            </button>
+          </li>
 
-            <button onClick={this.openModal} style={openButton}>
-              <li><a style={tabs}>About
-              </a></li></button>
-            <Modal
-              style={modalCont}
-              isOpen={this.state.open}>
-              <p></p>
-              <button onClick={this.closeModal}
-                style={xButton}>x</button>
-            </Modal>
+        </ul>
+      </div>
 
-         </ul>
-       </div>
+
+      <Modal
+        style={modalCont}
+        isOpen={this.state.activeModal === 'login'}>
+        <p>1!</p>
+          <button onClick={this.closeModal}
+            style={xButton}>x</button>
+      </Modal>
+
+      <Modal
+        style={modalCont}
+        isOpen={this.state.activeModal === 'calendar'}>
+        <p>2!</p>
+          <button onClick={this.closeModal}
+            style={xButton}>x</button>
+      </Modal>
+
+      <Modal
+        style={modalCont}
+        isOpen={this.state.activeModal === 'team'}>
+        <p>3!</p>
+          <button onClick={this.closeModal}
+            style={xButton}>x</button>
+      </Modal>
+
      </header>
-
     );
   }
 };
+
+
+
+/*
+<div style={subContainer}>
+  <ul style={modalDirectory}>
+
+
+
+  </ul>
+</div>
+<button onClick={this.openModal}
+  style={openButton}>
+  <li><a style={tabs}>Enter
+  </a></li></button>
+<Modal
+  style={modalCont}
+  isOpen={this.state.open}>
+    <button onClick={this.closeModal}
+      style={xButton}>x</button>
+</Modal>
+
+<button onClick={this.openModal}
+  style={openButton}>
+  <li><a style={tabs}>Login
+  </a></li></button>
+<Modal
+  style={modalCont}
+  isOpen={this.state.open}>
+  <p>Account</p>
+    <button onClick={this.closeModal()}
+      style={xButton}>x</button>
+</Modal>
+
+<button onClick={this.openModal('team')}
+  style={openButton}>
+  <li><a style={tabs}>Meet Us
+  </a></li></button>
+
+<Modal
+  style={modalCont}
+  isOpen={this.state.activeModal === 'team'}>
+  <p>Say Hello!</p>
+    <button onClick={this.closeModal()}
+      style={xButton}>x</button>
+</Modal>
+
+<button onClick={this.openModal} style={openButton}>
+  <li><a style={tabs}>About
+  </a></li></button>
+<Modal
+  style={modalCont}
+  isOpen={this.state.open}>
+  <p>why only this content</p>
+  <button onClick={this.closeModal}
+    style={xButton}>x</button>
+</Modal>
+
+*/
