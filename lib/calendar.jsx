@@ -48,7 +48,13 @@ class TechCalendar extends React.Component {
 
   render () {
 let cal = {
-  width:'100%'
+  position : 'absolute',
+    top: '40px',
+    left: '40px',
+    right: '40px',
+    bottom: '40px',
+    overflowY: 'scroll',
+    overflowX: 'scroll'
 };
 
 
