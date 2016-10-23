@@ -1,0 +1,57 @@
+/*  Basic resets for modern browsers */
+* {
+  margin:0; padding:0; font-family: 'poppins', 'sans-serif';
+}
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+
+/*  Basic resets for modern browsers */
+
+section, footer, div, header { border-radius: 5px; }
+
+li { color: #dddada; }
+
+li:hover { color:#c00; cursor:pointer; }
+
+a { text-decoration:none; color: #bf2314; }
+
+div p { padding:0.25em; text-indent: 1em;}
+
+/* Top right bottom left */
+.non-calendar-content{ padding:1em 1em 1em 1em; }
+
+/* min-width, so it go off on any screen smaller than 700px */
+@media (min-width: 700px) {
+  .side-bar-choice h4 {
+    font-size: x-large;
+  }
+}
+
+@media (max-height: 485px) {
+  .side-bar-choice h4 {
+    font-size: large;
+  }
+
+  h1 {
+    font-size:x-large;
+  }
+
+}
+
+/* For the video */
+video#bgvid {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(Dancing-Bulbs.jpg) no-repeat;
+    background-size: cover;
+}
