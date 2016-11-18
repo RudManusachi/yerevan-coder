@@ -5,64 +5,42 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "markdown-it": "^8.0.1",
-    "moments": "0.0.2",
-    "react": "^15.3.2",
-    "react-big-calendar": "^0.10.3",
-    "react-dom": "^15.3.2",
-    "react-modal": "^1.5.2",
-    "react-router": "^2.8.1",
-    "webpack": "^1.13.2",
+    "express-session": "^1.14.2",
+    "helmet": "^3.1.0",
+    "moment": "^2.16.0",
+    "react": "^15.4.0",
+    "react-big-calendar": "^0.11.0",
+    "react-dom": "^15.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-loader": "^6.2.7",
+    "babel-plugin-transform-class-properties": "^6.19.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-3": "^6.17.0",
+    "nodemon": "^1.11.0",
+    "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   },
   "babel": {
     "presets": [
       "react",
-      "es2015",
       "stage-3"
     ],
     "plugins": [
       "transform-es2015-modules-commonjs",
-      "transform-async-to-generator",
-      "transform-runtime"
-    ]
-  },
-  "devDependencies": {
-    "babel-cli": "^6.14.0",
-    "babel-core": "^6.17.0",
-    "babel-loader": "^6.2.5",
-    "babel-plugin-transform-async-to-generator": "6.8.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "6.8.0",
-    "babel-plugin-transform-runtime": "^6.15.0",
-    "babel-preset-es2015": "^6.14.0",
-    "babel-preset-react": "^6.11.1",
-    "babel-preset-react-hmre": "^1.1.1",
-    "babel-preset-stage-0": "^6.16.0",
-    "babel-preset-stage-3": "^6.11.0",
-    "eslint": "^3.8.0",
-    "eslint-config-airbnb": "^12.0.0",
-    "eslint-plugin-import": "^2.0.1",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.4.1",
-    "webpack": "^1.13.2"
-  },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "node": true
-    },
-    "extends": "airbnb",
-    "installedESLint": true,
-    "plugins": [
-      "react",
-      "jsx-a11y",
-      "import"
+      "transform-class-properties"
     ]
   },
   "scripts": {
-    "dev-server": "webpack-dev-server",
-    "lint": "eslint backend/* lib/**",
-    "front_end": "webpack --progress --colors"
+    "watch": "babel lib/*.jsx --watch --out-dir .",
+    "bundle-watch": "webpack --progress --colors --watch",
+    "backend-compile": "babel lib/*.jsx --out-dir .",
+    "backend-dev-server": "nodemon backend/server.js",
+    "frontend-dev-server": "webpack-dev-server",
+    "front-end": "webpack --progress --colors"
   },
   "author": "Edgar Aroutiounian <edgar.factorial@gmail.com>",
   "license": "MIT"

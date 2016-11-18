@@ -1,9 +1,8 @@
 import React from 'react';
-import { render } from 'react-dom';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 
-const md = window.markdownit();
+// const md = window.markdownit();
 
 BigCalendar.momentLocalizer(moment);
 
@@ -89,18 +88,78 @@ class TechCalendar extends Component {
 
 class Login extends Component {
 
-  s = {
-    display:'flex',
-    justifyContent:'center',
-    alignItems:'center'
+  constructor(p) {
+    super(p);
+    this.state = {username: '', password:''};
   }
 
+  tryLogin = e => {
+    e.preventDefault();
+    this.props.doLogin(this.state);
+    this.setState({username:'', password:''});
+  };
+
+  registerAccount = e => {
+    console.log(this.props);
+  };
+
   render () {
-    return (
-      <div style={{...this.props.style, ...this.s}}>
-        <p> Login screen </p>
-      </div>
-    );
+    const formContainer = {
+      marginTop:'25%',
+      height:'50%'
+    };
+    const formStyle = {
+      display:'flex',
+      padding:'1% 1% 1% 1%',
+      width:'50%',
+      height:'100%',
+      boxShadow: 'inset 0 0 10px #000000',
+      margin:'0 auto',
+      flexDirection:'column',
+      justifyContent:'center',
+      backgroundColor:'white'
+    };
+    const flexy = {display:'flex', flexDirection:'column'};
+    const ui = (isLoggedIn => {
+      if (isLoggedIn === false) {
+        return (
+          <div style={formContainer}>
+            <form style={formStyle}
+                  onSubmit={this.tryLogin}
+                  className={'form-login'}>
+              <p>Login so that you can write blog posts or add tech events.</p>
+              <hr/>
+              <div style={flexy}>
+                <label>Username</label>
+                <input type={'text'}
+                       placeholder={'hayastani@gmail.com'}
+                       onChange={e =>
+                  this.setState({...this.state, username:e.target.value})}
+                  value={this.state.username}/>
+              </div>
+              <div style={flexy}>
+                <label>Password</label>
+                <input type={'password'}
+                       placeholder={'not a serious password'}
+                       value={this.state.password}
+                       onChange={e =>
+                  this.setState({...this.state, password:e.target.value})}
+                  />
+              </div>
+              <div style={flexy}>
+                <input type={'submit'} value={'Sign in'}/>
+                <input type={'button'}
+                       onClick={this.registerAccount}
+                       value={'Register an account'}/>
+              </div>
+            </form>
+          </div>
+        );
+      } else {
+        return (<div> Already logged in </div>);
+      }
+    });
+    return ui(this.props.isLoggedIn);
   }
 };
 
@@ -109,6 +168,7 @@ class Content extends Component {
     const s = {
       minWidth: '80%',
       marginLeft:'2%',
+      filter:'grayscale(50%)',
       backgroundColor:siteColors.middleBlue,
       boxShadow: 'inset 0 0 10px #000000'
     };
@@ -118,10 +178,15 @@ class Content extends Component {
     const contentComponent = (c => {
       switch (c) {
       case 'About': return <About className={'non-calendar-content'}
-                                  style={aboutStyle}/>;
+        style={aboutStyle}/>;
       case 'Blog': return <Blog className={'non-calendar-content'}
-                                style={aboutStyle}/>;
-      case 'Login':return <Login style={aboutStyle}/>;
+        style={aboutStyle}/>;
+      case 'Login':
+        return (
+          <Login isLoggedIn={this.props.isLoggedIn}
+                 doLogin={this.props.doLogin}
+                 style={aboutStyle}/>
+        );
       default: return <TechCalendar/>;
       }
     })(this.props.contentShow);
@@ -141,6 +206,7 @@ class SideBar extends Component {
   render () {
     const sect_s = {
       textAlign:'center',
+      filter:'grayscale(50%)',
       backgroundColor:siteColors.middleBlue,
       boxShadow: 'inset 0 0 10px #000000',
       maxWidth: '18%',
@@ -168,8 +234,8 @@ class SideBar extends Component {
               default: return '';
               }
           })(item)}
-            key={idx}
-            onClick={this.changeContent.bind(this, idx)}>
+          key={idx}
+          onClick={this.changeContent.bind(this, idx)}>
           <h4>{item}</h4>
         </li>
       );
@@ -192,6 +258,7 @@ class TopBar extends Component {
       paddingLeft:'0.5em',
       marginLeft:'2vw',
       marginRight:'2vw',
+      filter:'grayscale(40%)',
       maxHeight:'10vh'
     };
     const banner_s = {
@@ -203,22 +270,39 @@ class TopBar extends Component {
     return (
       <header style={s}>
         <h1>
-          <em style={banner_s}> Yerevan Coder </em>
+          <em style={banner_s}>հայերեն ծրագրավորող (Armenian Coder)</em>
         </h1>
       </header>
     );
   }
 };
 
+export default
 class App extends Component {
 
   constructor () {
     super();
-    this.state = {contentChoice: 0, isLoggedIn: false};
+    this.state = {contentChoice: 3, isLoggedIn: false};
   }
 
   static defaultProps = {
     topics: ['About', 'Blog', 'Tech Events', 'Login']
+  }
+
+  doLogin = loginParams => {
+    const post_params = {
+      method:'post',
+      body:JSON.stringify(loginParams),
+      headers:new Headers({
+        'content-type':'application/json'
+      })
+    };
+    fetch('/login', post_params)
+      .then(respP => respP.json())
+      .then(resp => {
+        console.log(resp);
+        this.setState({contentChoice:3, isLoggedIn:true});
+      });
   }
 
   render () {
@@ -241,6 +325,7 @@ class App extends Component {
       paddingLeft:'0.5em',
       color:siteColors.textColor,
       boxShadow: 'inset 0 0 10px #000000',
+      filter:'grayscale(40%)',
       backgroundColor:siteColors.bottomOrange
     };
     const yCoder = 'https://github.com/fxfactorial/yerevan-coder';
@@ -252,7 +337,9 @@ class App extends Component {
             topics={this.props.topics}
             contentChoice={viewChoice => this.setState({contentChoice:viewChoice})}
             />
-            <Content contentShow={this.props.topics[this.state.contentChoice]}/>
+            <Content contentShow={this.props.topics[this.state.contentChoice]}
+                     doLogin={this.doLogin}
+                     isLoggedIn={this.state.isLoggedIn}/>
         </div>
         <footer style={footer_s}>
           <p>
@@ -264,5 +351,3 @@ class App extends Component {
     );
   }
 };
-
-render(<App/>, document.getElementById('container'));

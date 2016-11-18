@@ -45,3 +45,4 @@ test.js
 public/bundle.js
 scratch
 notes.md
+lib/*.js
