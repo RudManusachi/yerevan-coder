@@ -50,16 +50,37 @@ class About extends Component {
 
 class Blog extends Component {
 
-  s = {
-    overflowY: 'scroll'
+  test = _ => {
+    const editor_content = this.editor.querySelector('trix-editor').value;
+    // need to send it off
   }
 
   render () {
+    const editorStyle = {
+      backgroundColor:'white',
+      boxShadow: 'inset 0 0 10px #000000',
+      padding:'1.5em 1.5em 1.5em 1.5em'
+    };
+    const trix = `
+<trix-editor></trix-editor>
+`;
+    const blogEntry = {
+      display:'flex',
+      flexDirection:'column'
+    };
+
     return (
       <div className={this.props.className}
-           style={{...this.props.style, ...this.s}}>
-        <p> Blog component </p>
-      </div>
+           style={{...this.props.style, ...blogEntry}}>
+        <div style={editorStyle}
+             className={'blog-container'}
+             ref={handle => this.editor = handle}
+          dangerouslySetInnerHTML={{__html:trix}}/>
+          <button onClick={this.test}
+                  style={{marginLeft:'auto', marginTop:'1em'}}>
+            Submit blog post
+          </button>
+        </div>
     );
   }
 };
@@ -123,43 +144,51 @@ class Login extends Component {
     const ui = (isLoggedIn => {
       if (isLoggedIn === false) {
         return (
-          <div style={formContainer}>
-            <form style={formStyle}
-                  onSubmit={this.tryLogin}
-                  className={'form-login'}>
-              <p>Login so that you can write blog posts or add tech events.</p>
-              <hr/>
-              <div style={flexy}>
-                <label>Username</label>
-                <input type={'text'}
-                       placeholder={'hayastani@gmail.com'}
-                       onChange={e =>
-                  this.setState({...this.state, username:e.target.value})}
-                  value={this.state.username}/>
-              </div>
-              <div style={flexy}>
-                <label>Password</label>
-                <input type={'password'}
-                       placeholder={'not a serious password'}
-                       value={this.state.password}
-                       onChange={e =>
-                  this.setState({...this.state, password:e.target.value})}
-                  />
-              </div>
-              <div style={flexy}>
-                <input type={'submit'} value={'Sign in'}/>
-                <input type={'button'}
-                       onClick={this.registerAccount}
-                       value={'Register an account'}/>
-              </div>
-            </form>
-          </div>
+          <form style={formStyle}
+                onSubmit={this.tryLogin}
+                className={'form-login'}>
+            <p>Login so that you can write blog posts or add tech events.</p>
+            <hr/>
+            <div style={flexy}>
+              <label>Username</label>
+              <input type={'text'}
+                     placeholder={'someusername'}
+                     onChange={e =>
+                this.setState({...this.state, username:e.target.value})}
+                value={this.state.username}/>
+            </div>
+            <div style={flexy}>
+              <label>Password</label>
+              <input type={'password'}
+                     placeholder={'not a serious password'}
+                     value={this.state.password}
+                     onChange={e =>
+                this.setState({...this.state, password:e.target.value})}
+                />
+            </div>
+            <div style={flexy}>
+              <input type={'submit'} value={'Sign in'}/>
+              <input type={'button'}
+                     onClick={this.registerAccount}
+                     value={'Register an account'}/>
+            </div>
+          </form>
         );
       } else {
-        return (<div> Already logged in </div>);
+        return (
+          <div style={formStyle} className={'form-login'}>
+            <p style={{textAlign:'center'}}>
+              Logged in, you can add events to the tech calendar
+            </p>
+          </div>
+        );
       }
     });
-    return ui(this.props.isLoggedIn);
+    return (
+      <div style={formContainer}>
+        {ui(this.props.isLoggedIn)}
+      </div>
+    );
   }
 };
 
@@ -177,10 +206,16 @@ class Content extends Component {
     };
     const contentComponent = (c => {
       switch (c) {
-      case 'About': return <About className={'non-calendar-content'}
-        style={aboutStyle}/>;
-      case 'Blog': return <Blog className={'non-calendar-content'}
-        style={aboutStyle}/>;
+      case 'About':
+        return (
+          <About className={'non-calendar-content'}
+                 style={aboutStyle}/>
+        );
+      case 'Blog':
+        return (
+          <Blog className={'non-calendar-content'}
+                style={aboutStyle}/>
+        );
       case 'Login':
         return (
           <Login isLoggedIn={this.props.isLoggedIn}
@@ -282,7 +317,7 @@ class App extends Component {
 
   constructor () {
     super();
-    this.state = {contentChoice: 3, isLoggedIn: false};
+    this.state = {contentChoice: 1, isLoggedIn: false};
   }
 
   static defaultProps = {

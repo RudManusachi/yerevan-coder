@@ -33,6 +33,8 @@ const site =`
   <link rel="shortcut icon" type="image/x-icon" href="public/favicon.ico">
   <link href="styles.css" rel="stylesheet" type="text/css">
   <link href="react-big-calendar.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="trix.css">
+  <script type="text/javascript" src="trix.js"></script>
 </head>
 <body>
   <video ${video_opts} poster="Dancing-Bulbs.jpg" id="bgvid">
