@@ -50,9 +50,15 @@ class About extends Component {
 
 class Blog extends Component {
 
+  constructor(p) {
+    super(p);
+    this.state = {showPosts: false};
+  }
+
   test = _ => {
     const editor_content = this.editor.querySelector('trix-editor').value;
     // need to send it off
+    this.setState({showPosts:!this.state.showPosts});
   }
 
   render () {
@@ -61,23 +67,44 @@ class Blog extends Component {
       boxShadow: 'inset 0 0 10px #000000',
       padding:'1.5em 1.5em 1.5em 1.5em'
     };
-    const trix = `
-<trix-editor></trix-editor>
-`;
-    const blogEntry = {
-      display:'flex',
-      flexDirection:'column'
+    const trix = `<trix-editor></trix-editor>`;
+    const blogEntry = { display:'flex', flexDirection:'column' };
+    const pillBox = {
+      backgroundColor:'red',
+      alignSelf:'center',
+      display:'inline-flex',
+      justifyContent:'center',
+      cursor:'pointer',
+      marginBottom:'0.25em'
+    };
+    const choiceLeft = {
+      textAlign:'center',
+      paddingLeft:'1.0em',
+      borderBottomLeftRadius:0,
+      borderTopLeftRadius:0,
+      paddingRight:'1.0em'
+    };
+    const choiceRight = {
+      textAlign:'center',
+      borderBottomRightRadius:0,
+      borderTopRightRadius:0,
+      paddingRight:'1.0em',
+      paddingLeft:'1.0em'
     };
 
     return (
       <div className={this.props.className}
            style={{...this.props.style, ...blogEntry}}>
+        <div style={pillBox}>
+          <span style={choiceLeft}> All Posts </span>
+          <span style={choiceRight}> Write a post </span>
+        </div>
         <div style={editorStyle}
              className={'blog-container'}
              ref={handle => this.editor = handle}
           dangerouslySetInnerHTML={{__html:trix}}/>
           <button onClick={this.test}
-                  style={{marginLeft:'auto', marginTop:'1em'}}>
+                  style={{marginLeft:'auto', marginTop:'0.25em'}}>
             Submit blog post
           </button>
         </div>
