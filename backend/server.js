@@ -22,10 +22,42 @@ yc.use(session({
 const posts = [
   {author: 'Edgar Aroutiounian',
    date: new Date,
+   title:'Coming to Armenia',
+   tags: ['Armenia', 'Repat'],
+   post: 'This is an example blog post'},
+  {author: 'Edgar Aroutiounian',
+   date: new Date,
+   title:'Coming to Armenia',
+   tags: ['Armenia', 'Repat'],
+   post: 'This is an example blog post'},
+  {author: 'Edgar Aroutiounian',
+   date: new Date,
+   title:'Coming to Armenia',
+   tags: ['Armenia', 'Repat'],
+   post: 'This is an example blog post'},
+  {author: 'Edgar Aroutiounian',
+   date: new Date,
+   title:'Coming to Armenia',
+   tags: ['Armenia', 'Repat'],
+   post: 'This is an example blog post'},
+  {author: 'Edgar Aroutiounian',
+   date: new Date,
+   title:'Coming to Armenia',
+   tags: ['Armenia', 'Repat'],
+   post: 'This is an example blog post'},
+  {author: 'Edgar Aroutiounian',
+   date: new Date,
+   title:'Coming to Armenia',
+   tags: ['Armenia', 'Repat'],
+   post: 'This is an example blog post'},
+  {author: 'Edgar Aroutiounian',
+   date: new Date,
+   title:'Coming to Armenia',
    tags: ['Armenia', 'Repat'],
    post: 'This is an example blog post'},
   {author: 'Another Person',
    date: new Date,
+   title:'Coming to Armenia',
    tags: ['Armenia', 'Coding'],
    post: 'Another example blog post'}
 ];
@@ -64,7 +96,6 @@ yc.get('/', (req, res) => {
   res.setHeader('content-type', 'text/html');
   res.end(site);
 });
-
 
 yc.post('/login', json_parser, form_parser, (req, res) => {
   const {username, password} = req.body;

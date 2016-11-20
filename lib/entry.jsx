@@ -2,8 +2,6 @@ import React from 'react';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 
-// const md = window.markdownit();
-
 BigCalendar.momentLocalizer(moment);
 
 const { Component, PropTypes } = React;
@@ -51,15 +49,25 @@ class About extends Component {
 class BlogPost extends Component {
   render () {
     const post_style = {
-      backgroundColor:'red'
+      backgroundColor:'white',
+      color:'#3d3a3a',
+      marginBottom:'0.5em',
+      padding:'0.25em 0.25em 0.25em 0.25em '
+    };
+    const post_content_style = {
+
     };
     return (
       <div style={post_style}>
-        <p>{this.props.author}</p>
-        <p>{this.props.publication_date}</p>
-        <div>
-          {this.props.content}
+        <div style={{display:'flex', justifyContent:'center'}}>
+          <em style={{fontSize:'xx-large', textDecoration:'underline'}}>
+            {this.props.title}
+          </em>
         </div>
+        {this.props.author}, {(new Date(this.props.publication_date)).toDateString()}
+        <div dangerouslySetInnerHTML={{__html:this.props.content}}
+             style={post_content_style}
+             />
       </div>
     );
   }
@@ -76,6 +84,12 @@ class Blog extends Component {
     const editor_content = this.editor.querySelector('trix-editor').value;
     // need to send it off
     this.setState({showPosts:!this.state.showPosts});
+  }
+
+  componentDidMount() {
+    // Hack so that we can render on the server side since
+    // node doesn't have the window object
+    this.setState({showPosts:true});
   }
 
   render () {
@@ -111,7 +125,13 @@ class Blog extends Component {
       paddingLeft:'1.0em',
       backgroundColor: this.state.showPosts ? '' : '#786767'
     };
-
+    const all_posts_style = {
+      display:'flex',
+      flexDirection:'column',
+      height:'70vh',
+      boxShadow: 'inset 0 0 10px #000000',
+      overflowY:'scroll'
+    };
     const content = (show_posts => {
       if (show_posts === false) {
         return (
@@ -131,12 +151,15 @@ class Blog extends Component {
           return (
             <BlogPost author={post.author}
                       key={idx}
+                      title={post.title}
                       publication_date={post.date}
                       content={post.post}
                       tags={post.tags}/>);
         });
         return (
-          posts
+          <div style={all_posts_style}>
+            {posts}
+          </div>
         );
       }
     })(this.state.showPosts);
