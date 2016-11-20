@@ -19,6 +19,17 @@ yc.use(session({
   saveUninitialized: true
 }));
 
+const posts = [
+  {author: 'Edgar Aroutiounian',
+   date: new Date,
+   tags: ['Armenia', 'Repat'],
+   post: 'This is an example blog post'},
+  {author: 'Another Person',
+   date: new Date,
+   tags: ['Armenia', 'Coding'],
+   post: 'Another example blog post'}
+];
+
 const rendered = renderToString(createElement(frontend, null));
 const font =
       'https://fonts.googleapis.com/css?family=Poppins';
@@ -35,6 +46,10 @@ const site =`
   <link href="react-big-calendar.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="trix.css">
   <script type="text/javascript" src="trix.js"></script>
+  <script>
+    // This way we avoid a needless HTTP request
+    window.__ALL_BLOG_POSTS__ = ${JSON.stringify(posts)}
+  </script>
 </head>
 <body>
   <video ${video_opts} poster="Dancing-Bulbs.jpg" id="bgvid">
@@ -50,9 +65,14 @@ yc.get('/', (req, res) => {
   res.end(site);
 });
 
+
 yc.post('/login', json_parser, form_parser, (req, res) => {
   const {username, password} = req.body;
   console.log(username);
+  res.end(JSON.stringify({result:'success'}));
+});
+
+yc.post('/add-blog-post', json_parser, (req, res) => {
   res.end(JSON.stringify({result:'success'}));
 });
 

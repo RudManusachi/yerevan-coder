@@ -48,6 +48,23 @@ class About extends Component {
   }
 };
 
+class BlogPost extends Component {
+  render () {
+    const post_style = {
+      backgroundColor:'red'
+    };
+    return (
+      <div style={post_style}>
+        <p>{this.props.author}</p>
+        <p>{this.props.publication_date}</p>
+        <div>
+          {this.props.content}
+        </div>
+      </div>
+    );
+  }
+};
+
 class Blog extends Component {
 
   constructor(p) {
@@ -70,7 +87,6 @@ class Blog extends Component {
     const trix = `<trix-editor></trix-editor>`;
     const blogEntry = { display:'flex', flexDirection:'column' };
     const pillBox = {
-      backgroundColor:'red',
       alignSelf:'center',
       display:'inline-flex',
       justifyContent:'center',
@@ -78,18 +94,22 @@ class Blog extends Component {
       marginBottom:'0.25em'
     };
     const choiceLeft = {
+      boxShadow: 'inset 0 0 10px #000000',
       textAlign:'center',
       paddingLeft:'1.0em',
       borderBottomLeftRadius:0,
       borderTopLeftRadius:0,
-      paddingRight:'1.0em'
+      paddingRight:'1.0em',
+      backgroundColor: this.state.showPosts ? '#786767' : ''
     };
     const choiceRight = {
+      boxShadow: 'inset 0 0 10px #000000',
       textAlign:'center',
       borderBottomRightRadius:0,
       borderTopRightRadius:0,
       paddingRight:'1.0em',
-      paddingLeft:'1.0em'
+      paddingLeft:'1.0em',
+      backgroundColor: this.state.showPosts ? '' : '#786767'
     };
 
     const content = (show_posts => {
@@ -107,8 +127,16 @@ class Blog extends Component {
             </div>
         );
       } else {
+        const posts = window.__ALL_BLOG_POSTS__.map((post, idx) => {
+          return (
+            <BlogPost author={post.author}
+                      key={idx}
+                      publication_date={post.date}
+                      content={post.post}
+                      tags={post.tags}/>);
+        });
         return (
-          <div> hello world </div>
+          posts
         );
       }
     })(this.state.showPosts);
@@ -351,7 +379,7 @@ class TopBar extends Component {
     return (
       <header style={s}>
         <h1>
-          <em style={banner_s}>հայերեն ծրագրավորող (Armenian Coder)</em>
+          <em style={banner_s}>Հայերէն Ծրագրավորող (Armenian Coder)</em>
         </h1>
       </header>
     );
