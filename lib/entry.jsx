@@ -92,22 +92,41 @@ class Blog extends Component {
       paddingLeft:'1.0em'
     };
 
+    const content = (show_posts => {
+      if (show_posts === false) {
+        return (
+          <div>
+            <div style={editorStyle}
+                 className={'blog-container'}
+                 ref={handle => this.editor = handle}
+              dangerouslySetInnerHTML={{__html:trix}}/>
+              <button onClick={this.test}
+                      style={{marginLeft:'auto', marginTop:'0.25em'}}>
+                Submit blog post
+              </button>
+            </div>
+        );
+      } else {
+        return (
+          <div> hello world </div>
+        );
+      }
+    })(this.state.showPosts);
     return (
       <div className={this.props.className}
            style={{...this.props.style, ...blogEntry}}>
         <div style={pillBox}>
-          <span style={choiceLeft}> All Posts </span>
-          <span style={choiceRight}> Write a post </span>
+          <span style={choiceLeft}
+                onClick={_ => this.setState({showPosts:true})}>
+            All Posts
+          </span>
+          <span style={choiceRight}
+                onClick={_ => this.setState({showPosts:false})}>
+            Write a post
+          </span>
         </div>
-        <div style={editorStyle}
-             className={'blog-container'}
-             ref={handle => this.editor = handle}
-          dangerouslySetInnerHTML={{__html:trix}}/>
-          <button onClick={this.test}
-                  style={{marginLeft:'auto', marginTop:'0.25em'}}>
-            Submit blog post
-          </button>
-        </div>
+        {content}
+      </div>
     );
   }
 };

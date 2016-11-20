@@ -35,9 +35,7 @@ a { text-decoration:none; color: #bf2314; }
 /* Login form spacing */
 .form-login > * { margin-bottom:0.75em;}
 
-.blog-container > trix-editor {
-  height:400px;
-}
+.blog-container > trix-editor { height:45vh; }
 
 /* For the video */
 video#bgvid {
